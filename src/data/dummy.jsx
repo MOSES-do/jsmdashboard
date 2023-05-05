@@ -836,6 +836,7 @@ export const medicalproBranding = {
       color: '#FB9678',
     },
   ],
+
   leaders: [
     {
       image:
