@@ -8,8 +8,10 @@ import { Ecommerce, Orders, Line, Calendar, Employees, Stacked, Pyramid, Custome
 
 import './App.css'
 
+import { useStateContext } from './contexts/ContextProvider';
+
 function App() {
-  const activeMenu = true;
+  const { activeMenu } = useStateContext();
   return (
     <div>
       <BrowserRouter>
