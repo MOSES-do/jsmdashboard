@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { AiOutlineMenu } from 'react-icons/ai'
@@ -33,7 +33,7 @@ NavButton.propTypes = {
 }
 
 const Navbar = () => {
-    const { activeMenu, setActiveMenu, isClicked, handleClick, screenSize, setScreenSize } = useStateContext();
+    const { setActiveMenu, isClicked, handleClick, screenSize, setScreenSize } = useStateContext();
 
     useEffect(() => {
         const handleResize = () => setScreenSize(window.innerWidth);
