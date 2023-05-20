@@ -33,7 +33,7 @@ NavButton.propTypes = {
 }
 
 const Navbar = () => {
-    const { setActiveMenu, isClicked, handleClick, screenSize, setScreenSize } = useStateContext();
+    const { setActiveMenu, isClicked, handleClick, screenSize, setScreenSize, currentColor } = useStateContext();
 
     useEffect(() => {
         const handleResize = () => setScreenSize(window.innerWidth);
@@ -59,22 +59,22 @@ const Navbar = () => {
     return (
         <div className="flex justify-between p-2  relative md:mx-6">
             <NavButton title='Menu' customFunc={() => { setActiveMenu(prevActiveMenu => !prevActiveMenu) }}
-                color="blue" icon={<AiOutlineMenu />}
+                color={currentColor} icon={<AiOutlineMenu />}
             />
 
             <div className='flex'>
                 <NavButton title='Cart' customFunc={() => handleClick('cart')}
-                    color="blue" icon={<FiShoppingCart />}
+                    color={currentColor} icon={<FiShoppingCart />}
                 />
                 <NavButton title='Chat' dotColor="#03C9D7" customFunc={() => handleClick('chat')}
-                    color="blue" icon={<BsChatLeft />}
+                    color={currentColor} icon={<BsChatLeft />}
                 />
                 <NavButton title='Notifications' dotColor="#03C9D7" customFunc={() => handleClick('notification')}
-                    color="blue" icon={<RiNotification3Line />}
+                    color={currentColor} icon={<RiNotification3Line />}
                 />
 
                 <TooltipComponent content="Profile" position="BottomCenter">
-                    <div onClick={() => handleClick('userprofile')} className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg">
+                    <div onClick={() => handleClick('userProfile')} className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg">
                         <img className="rounded-full w-8 h-8" src={avatar} />
                         <p>
                             <span className='text-gray-400 text-14'>Hi, </span>{' '}

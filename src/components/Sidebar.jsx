@@ -9,7 +9,7 @@ import { useStateContext } from '../contexts/ContextProvider';
 
 const Sidebar = () => {
 
-    const { activeMenu, setActiveMenu, screenSize } = useStateContext();
+    const { activeMenu, setActiveMenu, screenSize, currentColor } = useStateContext();
 
     const handleCloseSideBar = () => {
         if (activeMenu && screenSize <= 900) {
@@ -26,7 +26,7 @@ const Sidebar = () => {
                 (<>
                     {/* Store icon and hamburger */}
                     <div className="flex justify-between items-center">
-                        <Link to="/" onClick={{ handleCloseSideBar }} className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900">
+                        <Link to="/" onClick={handleCloseSideBar} className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900">
                             <SiShopware /><span>Shoppy</span>
                         </Link>
                         <TooltipComponent content="Menu" position="BottomCenter">
@@ -44,6 +44,7 @@ const Sidebar = () => {
                                 {item.links.map((link) => (
                                     // isActive comes out of the box from the NavLink component in reactrouterdom
                                     <NavLink key={link.name} to={`/${link.name}`} onClick={handleCloseSideBar}
+                                        style={({ isActive }) => ({ backgroundColor: isActive ? currentColor : "" })}
                                         className={({ isActive }) => isActive ? activeLink : normalLink}
                                     >
                                         {link.icon}
